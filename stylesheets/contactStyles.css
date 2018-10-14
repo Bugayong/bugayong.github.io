@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Wire+One');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+body {
+    margin: 0px;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ec008d;
+}
+
+#logo {
+    height: 80px;
+    padding-left: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li{
+    position: relative;
+    right: 0px;
+    float: left;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #04123c;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.page {
+    display: inline;
+    font-weight: bold;
+    font-family: 'Wire One', sans-serif;
+    font-size: 30px;
+}
+
+#contactLinks {
+    display:flex;
+    Width: 50%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'PT Mono', monospace;
+    color: #04123c;
+}
+
+#instaButton, #twitButton {
+    height: 350px;
+}
+
+#gmail {
+    font-size: 12px;
+    margin-top: 125px;
+}

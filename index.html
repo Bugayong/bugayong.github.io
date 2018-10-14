@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+  <title>Home</title>
+  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+  <link rel="stylesheet" href="stylesheets/styles.css">
+</head>
+
+<body>
+
+  <div id="container">
+      <header id="menu">
+        <!--<img id="bLogo" src="images/bLogo.png">-->
+        <img id="logo" src="images/logoText.png">
+        <img id="gDesigner" src="images/header.png">
+        <ul>
+            <li id="about" class="page"><a href="about.html">About</a></li>
+            <li id="gallery" class="page"><a href="gallery.html">Gallery</a></li>
+            <li id="contact" class="page"><a href="contact.html">Contact</a></li>
+        </ul>
+      </header>
+      <div id="sections">
+          <section class="text">
+              <h1>TUGON WEEKENDERS BAZAAR</h1>
+              <p>The Weekenderʼs Bazaar was meant to have a retro
+                outdoors feel. Tasked with portraying this story, I
+                illustrated characters in traditional Retro get-up,
+                enjoying the day. The style aligned with the vocation
+                of TUGON which is directed towards helping chil-
+                dren and fighting child abuse.</p>
+          </section>
+          <section id="tBImg">
+                <img id="tB" src="images/home/tB.jpg">
+          </section>
+          <section id="dreamCloset">
+                <img id="clothes" src="images/home/clothes.jpg">
+          </section>
+          <section class="text">
+              <h1>DREAM CLOSET</h1>
+              <p>Done with natural brushes on ADOBE PHO-
+                TOSHOP, DREAM CLOSET was a personal
+                project - a way to distress. As a student
+                dormer, I usually find myself tight on money
+                - or at the least I donʼt have enough to fuel
+                my ambitious closet dreams. In substitution
+                for this strong desire, I would draw the
+                outfits I desired and keep it with me as a
+                motivation driver in every commission work I
+                did. It was a unique style; keeping to
+                abstract humane forms, while still depicting
+                me.</p>
+          </section>
+          <section class="text">
+              <h1>SUBARASHII RAMEN MAKEOVER</h1>
+              <p>Now identifying themselves as a Japanese comfort food stall, SUBARASHII was a
+                student-run food stall under the JSEC student experience. As a student myself, I
+                became an understanding partner for the owners and was ultimately trusted to
+                remake their logos, focusing on the king of Japanese comforting food: RAMEN.</p>
+          </section>
+          <section id="suba">
+              <img id="rashii" src="images/home/subarashii.png">
+          </section>     
+      </div>
+      <div id="works">
+            <section id="cu" class="workSec">
+                <img id="yo" src="images/home/cuyo.jpg">
+                <h1>CUYO, PALAWAN</h1>
+                <p>As an artist for GRIDS, an org that connects
+                     designers and artists with student clients, I
+                    worked together with a BFA Creative Writing
+                    Major to bring to life her thesis: a fictional
+                    piece written about the conspicious events
+                    taking place in Cuyo Palawan. The difficulty
+                    of this was depicting and island I had never
+                    gone to, through SAI brushes, however, I
+                    made my attempt. The stitching shadows
+                    added to create a creepy effect</p>
+            </section>
+            <section id="he" class="workSec">
+                <img id="ro" src="images/home/hero.jpg">
+                <h1>SUPERHEROES</h1>
+                <p>My second client was for GRIDS was another BFA Creative Writ-
+                    ing Major looking to have a cover for her thesis. The focus of her
+                    story was the regular lives of superheroes - theyʼre less than super
+                    problems.</p>
+            </section>
+            <section id="xmas" class="workSec">
+                <img id="tree" src="images/home/tree.png">
+                <h1>CHRISTMAS CHEER</h1>
+                <p>In my 4th year of HS (2014) I was required by
+                    my teacher to make a Christmas card to be
+                    sold. All proceeds would go to the victims of
+                    typhoon YOLANDA. I created this piece, a
+                    single shining tree amongs the scraps of a
+                    horrible desire as a sign of hope amongst the
+                    ruins.</p>
+            </section>
+      </div>
+      <div id="space">
+            <img src="images/Logo.png">
+      </div>
+      <footer>
+            <span id="buttons">
+                <a href="https://www.instagram.com"><img id="insta" src="images/instagram.png"></a><a href="https://www.twitter.com"><img id="twit" src="images/twitter.png"></a>
+            </span>
+        </footer>
+  </div>   
+    
+</body>
+
+<script>
+
+const homeImages = Array.from(document.getElementsByTagName("img"));
+
+function preventCopy(arr) {
+    arr.forEach(element => {
+        element.addEventListener('contextmenu', event => event.preventDefault());
+    })
+}
+
+window.onload = preventCopy(homeImages);
+
+</script>
+
+</html>

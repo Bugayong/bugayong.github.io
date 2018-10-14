@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+  <title>Gallery</title>
+  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+  <link rel="stylesheet" href="stylesheets/galleryStyles.css">
+</head>
+
+<body>
+
+  <div id="container">
+      <div id="viewer"></div>
+      <div id="menu">
+        <ul id="filter">
+          <li id="all" class="category">All</li>
+          <li id="cp" class="category">Character Illustrations</li>
+          <li id="gd" class="category">Graphic Designs</li>
+          <li id="cards" class="category">Cards</li>
+          <li id="misc" class="category">Misc.</li>
+        </ul>
+          <a href="index.html"><img id ="logo" src="images/logoSmall.png"></a>
+        <ul id="a">
+          <li id="link"><a href="about.html">About</a></li>
+          <li id="link"><a href="contact.html">Contact</a></li>
+        </ul>
+        <span><a href="https://www.instagram.com/"><img id="insta" src="images/instagram.png"></a><a href="https://www.twitter.com"><img id="twit" src="images/twitter.png"></a></span>
+      </div>
+      <div id="galleryCont"></div>
+  </div>
+
+</body>
+
+<script>
+
+//Variables used to manipulate DOM
+const cont = document.querySelector('#container');
+const viewer = document.querySelector('#viewer');
+const gCont = document.querySelector('#galleryCont');
+const all = document.querySelector('#all');
+const graphicsD = document.querySelector('#gd');
+const characterP = document.querySelector('#cp');
+const cards = document.querySelector('#cards');
+const misc = document.querySelector('#misc');
+const categ = document.getElementsByClassName('category');
+
+all.style.cssText = "color: rgb(236, 0, 141);"
+
+//Object containing the thumbnail and image path
+const images = [
+  {thumb: "images/thumbs/cp1thumb.jpg", image: "images/characterPortraits/cp1.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp2thumb.jpg", image: "images/characterPortraits/cp2.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp3thumb.jpg", image: "images/characterPortraits/cp3.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp4thumb.jpg", image: "images/characterPortraits/cp4.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp5thumb.jpg", image: "images/characterPortraits/cp5.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp6thumb.jpg", image: "images/characterPortraits/cp6.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp7thumb.jpg", image: "images/characterPortraits/cp7.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp8thumb.jpg", image: "images/characterPortraits/cp8.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp9thumb.jpg", image: "images/characterPortraits/cp9.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp10thumb.jpg", image: "images/characterPortraits/cp10.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp11thumb.jpg", image: "images/characterPortraits/cp11.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp12thumb.jpg", image: "images/characterPortraits/cp12.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp13thumb.jpg", image: "images/characterPortraits/cp13.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp14thumb.jpg", image: "images/characterPortraits/cp14.jpg", class: "cp"},
+  {thumb: "images/thumbs/cp15thumb.jpg", image: "images/characterPortraits/cp15.jpg", class: "cp"},
+  //pudough
+  {thumb: "images/thumbs/pudoughthumb.jpg", image: "images/graphicDesigns/pudough.jpg", class: "gd"},
+  {thumb: "images/thumbs/pudough2thumb.jpg", image: "images/graphicDesigns/pudough2.jpg", class: "gd"},
+  {thumb: "images/thumbs/pudough3thumb.jpg", image: "images/graphicDesigns/pudough3.jpg", class: "gd"},
+  {thumb: "images/thumbs/pudough4thumb.png", image: "images/graphicDesigns/pudough4.png", class: "gd"},
+  //sergs
+  {thumb: "images/thumbs/sergsthumb.png", image: "images/graphicDesigns/sergs.png", class: "gd"},
+  {thumb: "images/thumbs/sergsMilkthumb.png", image: "images/graphicDesigns/sergsMilk.png", class: "gd"},
+  {thumb: "images/thumbs/sergsDarkthumb.png", image: "images/graphicDesigns/sergsDark.png", class: "gd"},
+  //gd misc
+  {thumb: "images/thumbs/goodVybesthumb.png", image: "images/graphicDesigns/goodVybes.png", class: "gd"},
+  {thumb: "images/thumbs/patchwordthumb.jpg", image: "images/graphicDesigns/patchwordk.jpg", class: "gd"},
+  {thumb: "images/thumbs/sirensthumb.png", image: "images/graphicDesigns/sirens.png", class: "gd"},
+  {thumb: "images/thumbs/zesthumb.jpg", image: "images/graphicDesigns/zes.jpeg", class: "gd"},
+  //brise
+  {thumb: "images/thumbs/brise1thumb.png", image: "images/graphicDesigns/brise1.png", class: "gd"},
+  {thumb: "images/thumbs/erlthumb.png", image: "images/graphicDesigns/erl.png", class: "gd"},
+  {thumb: "images/thumbs/erl2thumb.png", image: "images/graphicDesigns/erl2.png", class: "gd"},
+  //business cards
+  {thumb: "images/thumbs/pudoughCardthumb.jpg", image: "images/cards/pudoughCard.jpg", class: "cd"},
+  {thumb: "images/thumbs/rsvpCardthumb.jpg", image: "images/cards/rsvpCard.jpg", class: "cd"},
+  {thumb: "images/thumbs/rsvp2thumb.jpg", image: "images/cards/rsvp2.jpg", class: "cd"},
+  //misc items
+  {thumb: "images/thumbs/misc1thumb.jpg", image: "images/misc/misc1.jpg", class: "mc"},
+  {thumb: "images/thumbs/misc2thumb.png", image: "images/misc/misc2.png", class: "mc"},
+  {thumb: "images/thumbs/misc3thumb.jpg", image: "images/misc/misc3.jpg", class: "mc"},
+];
+
+//Creates the image gallery 
+function galleryLoad(arr) {
+  let thumbArr = [];
+  arr.forEach(img => {
+    thumbArr[arr.indexOf(img)] = document.createElement('img');
+    thumbArr[arr.indexOf(img)].src = img['thumb'];
+    thumbArr[arr.indexOf(img)].style.cssText = "min-height: 500px; min-width: 244.44px; height: 60%; width: 16%; margin: 5px;"
+    preventCopy(thumbArr[arr.indexOf(img)]);
+
+    thumbArr[arr.indexOf(img)].addEventListener('click', event => {
+      let imgArr = [];
+      imgArr[arr.indexOf(img)] = document.createElement('img');
+      imgArr[arr.indexOf(img)].src = img['image'];
+      preventCopy(imgArr[arr.indexOf(img)]);
+      viewer.style.display = "flex";
+      viewer.appendChild(imgArr[arr.indexOf(img)]);
+      viewer.addEventListener('click', event => {
+        if(event.target.id === 'viewer') {
+          imgRemove(viewer);
+          viewer.style.display = "none";
+        }
+        
+      })
+    });
+    gCont.appendChild(thumbArr[arr.indexOf(img)]);
+  });
+};
+
+//Filters gallery viewer depending on class. Should refractor in the future.
+underline(all);
+all.addEventListener('click', event => {
+  for(let i = 0; i< categ.length; i++) {
+    categ[i].style.cssText = "text-decoration: none; color: #04123c;";
+  }
+  event.target.style.cssText = "color: rgb(236, 0, 141);"
+  imgRemove(gCont);
+  galleryLoad(images);
+})
+
+underline(characterP);
+characterP.addEventListener('click', event => {
+  for(let i = 0; i < categ.length; i++) {
+    categ[i].style.cssText = "text-decoration: none; color: #04123c;";
+  }
+  event.target.style.cssText = "color: rgb(236, 0, 141);"
+  let characterArr = images.filter(element => element['class'] === 'cp');
+  imgRemove(gCont);
+  galleryLoad(characterArr);
+})
+
+underline(graphicsD);
+graphicsD.addEventListener('click', event => {
+  for(let i = 0; i < categ.length; i++) {
+    categ[i].style.cssText = "text-decoration: none; color: #04123c;";
+  }
+  event.target.style.cssText = "color: rgb(236, 0, 141);"
+  let graphicsArr = images.filter(element => element['class'] === 'gd');
+  imgRemove(gCont);
+  galleryLoad(graphicsArr);
+})
+
+underline(cards);
+cards.addEventListener('click', event => {
+  for(let i = 0; i < categ.length; i++) {
+    categ[i].style.cssText = "text-decoration: none; color: #04123c;";
+  }
+  event.target.style.cssText = "color: rgb(236, 0, 141);"
+  let cardsArr = images.filter(element => element['class'] === 'cd');
+  imgRemove(gCont);
+  galleryLoad(cardsArr);
+})
+
+underline(misc);
+misc.addEventListener('click', event => {
+  for(let i = 0; i < categ.length; i++) {
+    categ[i].style.cssText = "text-decoration: none; color: #04123c;";
+  }
+  event.target.style.cssText = "color: rgb(236, 0, 141);"
+  let miscArr = images.filter(element => element['class'] === 'mc');
+  imgRemove(gCont);
+  galleryLoad(miscArr);
+})
+
+function underline(el) {
+  el.addEventListener('mouseover', event => {
+    if(event.target.style.color !== "rgb(236, 0, 141)") {
+      event.target.style.textDecoration = "underline";
+      event.target.style.cursor = "pointer";
+    } else {
+      event.target.style.textDecoration = "none";
+      event.target.style.cursor = "default";
+    }
+  })
+
+  el.addEventListener('mouseout', event => {
+    event.target.style.textDecoration = "none";
+  })
+}
+
+//Removes images from page
+function imgRemove(filter) {
+  while(filter.firstChild) {
+    filter.removeChild(filter.firstChild);
+  }
+}
+
+//Prevents right click context menu from appearing making it harder to copy images from the website
+function preventCopy(imgElement) {
+  imgElement.addEventListener('contextmenu', event => event.preventDefault());
+}
+
+window.onload = galleryLoad(images);
+
+</script>
+</html>

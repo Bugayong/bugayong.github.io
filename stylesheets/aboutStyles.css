@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Wire+One');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+body {
+    margin: 0px;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ec008d;
+}
+
+#logo {
+    height: 80px;
+    padding-left: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li{
+    position: relative;
+    right: 0px;
+    float: left;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #04123c;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.page {
+    display: inline;
+    font-weight: bold;
+    font-family: 'Wire One', sans-serif;
+    font-size: 30px;
+}
+
+section {
+    display: flex;
+    flex-direction: column-reverse;
+    /*background-image: url(../images/Contact.png);*/
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    color: #04123c;
+    text-align: center;
+}
+
+#about {
+    width: 45%;
+    /*background-color: #ec008d;*/
+    margin: 0px;
+    /*border: 1px solid #04123c;*/ 
+    border-radius: 10px;
+    padding: 15px;
+    font-family: 'PT Mono', monospace;
+}
+
+#gDesigner {
+    min-width: 640px;
+    width: 40%;
+    height: 520px;
+    border-radius: 10px;
+    /*border: 1px solid #04123c;*/
+}
+
+footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    bottom: 0px;
+    border-top: 1px solid #ec008d;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+footer img {
+    height: 35px;
+    margin-right: 5px;
+}
+
+#twit {
+    margin-right: 15px;
+}
