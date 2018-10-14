@@ -90,7 +90,11 @@ span {
   max-width: 275px;
   width: 25%;
   height: 100%;
-  position: fixed;
+  top: 0;
+  bottom:0;
+  position:fixed;
+  overflow-y:auto;
+  overflow-x:auto;
   left: 0px;
   background-color: white;
   /*border-right: 1px solid rgb(236, 0, 141);*/
